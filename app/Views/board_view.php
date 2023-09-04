@@ -14,18 +14,24 @@ var_dump($view);
     <?php echo $view->content;?>
   </p>
   <?php
-    if(isset($view->filename)){
-  ?>
-    <img src="<?php echo  base_url('/uploads/'.$view->filename);?>">
-  <?php }?>
+        if(isset($view->fs)){
+          $vfs = explode(",",$view->fs); //파일 정보를 ,를 이용하여 배열로 분리
+          foreach($vfs as $img){
+            if(isset($img)){
+          ?>
+          <img src="<?php echo  base_url('/uploads/'.$img);?>">
+          <?php
+            }
+          }
+        }?>
   <hr>
   <p class="text-end">
     <?php
       if(isset($_SESSION['userid'])){ //로그인후 세션에 userid 정보가 있다면
     ?>
     <a href="/modify/<?php echo $view->bid;?>" class="btn btn-primary">수정<a>
-    <a href="/delete/<?php echo $view->bid;?>" class="btn btn-warning">삭제<a>
-    <?php } ?>
-    <a href="/board" class="btn btn-primary">목록<a>
+        <a href="/delete/<?php echo $view->bid;?>" class="btn btn-warning">삭제<a>
+            <?php } ?>
+            <a href="/board" class="btn btn-primary">목록<a>
   </p>
 </article>

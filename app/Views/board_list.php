@@ -22,6 +22,14 @@
   </tbody>
 
 </table>
+<!-- 페이징 링크 표시 -->
+<div>전체 게시물수:<?= $total ?></div>
+<div>현재페이지:<?= $page ?></div>
+<div>페이지당 게시물수:<?= $perPage ?></div>
+<div class="pager-links">
+        <?= $pager_links ?>
+</div>
+
 <p class="text-end">
   <a href="/boardWrite" class="btn btn-primary">등록</a>
 
